@@ -19,6 +19,7 @@ public class Solution1_1 {
 		for(String key : map.keySet()) {
 			if(map.get(key)!= 0) {
 				answer = key;
+				break;
 			}
 		}
 		
