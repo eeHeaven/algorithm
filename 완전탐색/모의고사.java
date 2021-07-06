@@ -31,7 +31,12 @@ class Solution {
                 ans.add(i+1);
         }
         int[] answer = new int[ans.size()];
-        answer = ans.stream().mapToInt(i -> i).toArray();
+        
+       //이렇게 하면 stream 썼다고 시간 더 많이 잡아먹음 효율성 부분에서 마이너스 받지는 않았지만 참고할 것 answer = ans.stream().mapToInt(i -> i).toArray();
+        
+        for(int i = 0;i<ans.size();i++){
+            answer[i] = ans.get(i);
+        }
 
 
 
