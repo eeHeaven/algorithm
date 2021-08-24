@@ -22,9 +22,10 @@ class Main{
                     st.push(num);
                     break;
                 case "pop":
-                    if(st.isEmpty()) {System.out.println(-1); break;}
-                    else{
-                        System.out.println(st.pop()); break;}
+                    if(st.isEmpty()) System.out.println(-1);
+                    else
+                        System.out.println(st.pop()); 
+                     break;
                 case "size":
                     System.out.println(st.size());
                     break;
