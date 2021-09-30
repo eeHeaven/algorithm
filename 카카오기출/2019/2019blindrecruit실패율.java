@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    public static int[] solution(int N, int[] stages) {
+    public int[] solution(int N, int[] stages) {
         int[] answer = new int[N];
 
         int[][] each = new int[N+1][2];
