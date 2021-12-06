@@ -28,8 +28,8 @@ class Main {
     }
 
     public static void dfs(int start, int n){
-        if(start>n){
-            max = Math.max(max,totalP);
+        if(start>n){ // 다음 일 가능한 날짜가 근무 기간을 넘어서면 
+            max = Math.max(max,totalP); // 더 이상 일을 못하므로 max에 반영 
             return;
         }
         for(int i = start; i<=n; i++){
@@ -38,7 +38,7 @@ class Main {
                 dfs(i+time[i],n); //다음 일 가능한 날짜로 이동
                 totalP -= pay[i]; // 재귀 끝나면 일 페이 다시 돌려놓기
             }
-            else if(i == n && work(i,n)==false)  max = Math.max(max,totalP);
+            else if(i == n && work(i,n)==false)  max = Math.max(max,totalP); // 마지막 날까지 탐색해봤는데 더 이상 일을 못하면 max에 반영 
         }
     }
 
