@@ -18,35 +18,36 @@ class Main {
         String first = br.readLine();
         s = Integer.parseInt(first);
 
-        q.add(new Emoticon(1,0,0));
+        q.add(new Emoticon(1, 0, 0));
 
-        boolean[] visited = new boolean[2001];
+        boolean[][] visited = new boolean[2001][1001];
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
             Emoticon e = q.poll();
             int screen = e.screen;
             int clipboard = e.clipboard;
             int time = e.time;
-            if(screen == s){
+            if (screen == s) {
                 System.out.println(time);
                 return;
             }
-            if(screen-1 >=2&& visited[screen-1] == false){ // 스크린에서 한개의 이모티콘 빼기
-                visited[screen-1] = true;
-                q.add(new Emoticon(screen-1,clipboard,time+1));
+            if (screen - 1 >= 2 && visited[screen - 1][clipboard] == false) { // 스크린에서 한개의 이모티콘 빼기
+                visited[screen - 1][clipboard] = true;
+                q.add(new Emoticon(screen - 1, clipboard, time + 1));
             }
-            if(screen>0 && clipboard!=screen){ // 스크린에 있는 이모티콘 클립보드에 복사하기
-               q.add(new Emoticon(screen,screen,time+1));
+            if (screen < 1000 && clipboard != screen) { // 스크린에 있는 이모티콘 클립보드에 복사하기
+                q.add(new Emoticon(screen, screen, time + 1));
             }
-            if(clipboard >0 && screen+clipboard<2000){
-             //   if(visited[screen+clipboard] == false){
-               //     visited[screen+clipboard] = true;
-                    q.add(new Emoticon(screen+clipboard,clipboard,time+1));
+            if (clipboard > 0 && screen + clipboard < 2000) {
+                if (visited[screen + clipboard][clipboard] == false) {
+                    visited[screen + clipboard][clipboard] = true;
+                    q.add(new Emoticon(screen + clipboard, clipboard, time + 1));
                 }
             }
         }
 
     }
+}
 
 class Emoticon{
     public int screen;
